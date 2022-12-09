@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Header() {
   return (
@@ -60,15 +60,17 @@ function Home() {
 
   const handleIndexRecipes = () => {
     axios.get("http://localhost:3000/recipes.json").then((response) => {
-      console.log(response);
+      console.log(response.data);
+      setRecipes(response.data);
     });
   };
+
+  useEffect(handleIndexRecipes, []);
 
   return (
     <div>
       <RecipesNew />
       <RecipesIndex recipes={recipes} />
-      <button onClick={handleIndexRecipes}>Load Recipes</button>
     </div>
   );
 }
