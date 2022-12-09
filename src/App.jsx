@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 
 function Header() {
@@ -55,31 +56,19 @@ function Footer() {
 }
 
 function Home() {
-  const [recipes, setRecipes] = useState([
-    {
-      id: 1,
-      title: "Raw Eggs",
-      chef: "Peter Jang",
-      image_url: "https://cdn.britannica.com/94/151894-050-F72A5317/Brown-eggs.jpg",
-    },
-    {
-      id: 2,
-      title: "Mud Pie",
-      chef: "Jay Wengrow",
-      image_url: "https://static.onecms.io/wp-content/uploads/sites/9/2017/12/mud-pie-XL-RECIPE2016.jpg",
-    },
-    {
-      id: 3,
-      title: "Pizza",
-      chef: "Jay Wengrow",
-      image_url:
-        "https://static.onecms.io/wp-content/uploads/sites/9/2021/06/15/mozzarella-pizza-margherita-FT-RECIPE0621.jpg",
-    },
-  ]);
+  const [recipes, setRecipes] = useState([]);
+
+  const handleIndexRecipes = () => {
+    axios.get("http://localhost:3000/recipes.json").then((response) => {
+      console.log(response);
+    });
+  };
+
   return (
     <div>
       <RecipesNew />
       <RecipesIndex recipes={recipes} />
+      <button onClick={handleIndexRecipes}>Load Recipes</button>
     </div>
   );
 }
