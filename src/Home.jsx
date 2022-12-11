@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { RecipesIndex } from "./RecipesIndex";
 import { RecipesNew } from "./RecipesNew";
+import { Modal } from "./Modal";
 
 export function Home() {
   const [recipes, setRecipes] = useState([]);
@@ -19,6 +20,10 @@ export function Home() {
     <div>
       <RecipesNew />
       <RecipesIndex recipes={recipes} />
+      <Modal show={false}>
+        <h1>Hello</h1>
+        <p>Test!</p>
+      </Modal>
     </div>
   );
 }
