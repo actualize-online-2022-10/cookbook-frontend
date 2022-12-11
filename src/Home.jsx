@@ -6,6 +6,7 @@ import { Modal } from "./Modal";
 
 export function Home() {
   const [recipes, setRecipes] = useState([]);
+  const [isRecipesShowModalVisible, setIsRecipesShowModalVisible] = useState(false);
 
   const handleIndexRecipes = () => {
     axios.get("http://localhost:3000/recipes.json").then((response) => {
@@ -14,13 +15,21 @@ export function Home() {
     });
   };
 
+  const handleShowRecipe = () => {
+    setIsRecipesShowModalVisible(true);
+  };
+
+  const handleHideRecipe = () => {
+    setIsRecipesShowModalVisible(false);
+  };
+
   useEffect(handleIndexRecipes, []);
 
   return (
     <div>
       <RecipesNew />
-      <RecipesIndex recipes={recipes} />
-      <Modal show={false}>
+      <RecipesIndex recipes={recipes} onSelectRecipe={handleShowRecipe} />
+      <Modal show={isRecipesShowModalVisible} onClose={handleHideRecipe}>
         <h1>Hello</h1>
         <p>Test!</p>
       </Modal>

@@ -1,5 +1,5 @@
 export function RecipesIndex(props) {
-  console.log(props.recipes);
+  console.log(props.onSelectRecipe);
   return (
     <div id="recipes-index">
       <h1>All Recipes</h1>
@@ -8,7 +8,7 @@ export function RecipesIndex(props) {
           <h2>{recipe.title}</h2>
           <img src={recipe.image_url} alt="" />
           <p>Chef: {recipe.chef}</p>
-          <button>More Info</button>
+          <button onClick={props.onSelectRecipe}>More Info</button>
         </div>
       ))}
     </div>
