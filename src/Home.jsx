@@ -4,6 +4,7 @@ import { RecipesIndex } from "./RecipesIndex";
 import { RecipesNew } from "./RecipesNew";
 import { RecipesShow } from "./RecipesShow";
 import { Modal } from "./Modal";
+import { Signup } from "./Signup";
 
 export function Home() {
   const [recipes, setRecipes] = useState([]);
@@ -31,6 +32,7 @@ export function Home() {
 
   return (
     <div className="container">
+      <Signup />
       <RecipesNew />
       <RecipesIndex recipes={recipes} onSelectRecipe={handleShowRecipe} />
       <Modal show={isRecipesShowModalVisible} onClose={handleHideRecipe}>
