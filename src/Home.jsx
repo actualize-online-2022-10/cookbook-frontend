@@ -5,6 +5,7 @@ import { RecipesNew } from "./RecipesNew";
 import { RecipesShow } from "./RecipesShow";
 import { Modal } from "./Modal";
 import { Signup } from "./Signup";
+import { Login } from "./Login";
 
 export function Home() {
   const [recipes, setRecipes] = useState([]);
@@ -32,6 +33,7 @@ export function Home() {
 
   return (
     <div className="container">
+      <Login />
       <Signup />
       <RecipesNew />
       <RecipesIndex recipes={recipes} onSelectRecipe={handleShowRecipe} />
