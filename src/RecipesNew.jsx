@@ -4,12 +4,12 @@ export function RecipesNew() {
       <h1>New Recipe</h1>
       <form>
         <div>
-          Title: <input type="text" />
+          Title: <input className="form-control" type="text" />
         </div>
         <div>
-          Chef: <input type="text" />
+          Chef: <input className="form-control" type="text" />
         </div>
-        <button>Create Recipe</button>
+        <button className="btn btn-primary mt-3">Create Recipe</button>
       </form>
     </div>
   );
