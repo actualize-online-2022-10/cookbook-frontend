@@ -5,10 +5,15 @@ export function RecipesNew(props) {
     props.onCreateRecipe(params);
     event.target.reset();
   };
-
+  console.log(props.errors);
   return (
     <div id="recipes-new">
       <h1>New Recipe</h1>
+      <ul>
+        {props.errors.map((error) => (
+          <li key={error}>{error}</li>
+        ))}
+      </ul>
       <form onSubmit={handleSubmit}>
         <div>
           Title: <input name="title" className="form-control" type="text" />

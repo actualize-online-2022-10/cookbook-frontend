@@ -11,7 +11,7 @@ export function Home() {
   const [recipes, setRecipes] = useState([]);
   const [isRecipesShowModalVisible, setIsRecipesShowModalVisible] = useState(false);
   const [currentRecipe, setCurrentRecipe] = useState({});
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState([]);
 
   const handleIndexRecipes = () => {
     axios.get("http://localhost:3000/recipes.json").then((response) => {
@@ -26,7 +26,7 @@ export function Home() {
       .then((response) => {
         setRecipes([...recipes, response.data]); // recipes.push(response.data)
       })
-      .catch((errors) => {
+      .catch((error) => {
         console.log(error.response.data.errors);
         setErrors(error.response.data.errors);
       });
@@ -48,7 +48,7 @@ export function Home() {
     <div className="container">
       <Login />
       <Signup />
-      <RecipesNew onCreateRecipe={handleCreateRecipe} recipeErrors={errors} />
+      <RecipesNew onCreateRecipe={handleCreateRecipe} errors={errors} />
       <RecipesIndex recipes={recipes} onSelectRecipe={handleShowRecipe} />
       <Modal show={isRecipesShowModalVisible} onClose={handleHideRecipe}>
         <RecipesShow recipe={currentRecipe} />
