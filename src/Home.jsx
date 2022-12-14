@@ -11,12 +11,25 @@ export function Home() {
   const [recipes, setRecipes] = useState([]);
   const [isRecipesShowModalVisible, setIsRecipesShowModalVisible] = useState(false);
   const [currentRecipe, setCurrentRecipe] = useState({});
+  const [errors, setErrors] = useState({});
 
   const handleIndexRecipes = () => {
     axios.get("http://localhost:3000/recipes.json").then((response) => {
       console.log(response.data);
       setRecipes(response.data);
     });
+  };
+
+  const handleCreateRecipe = (params) => {
+    axios
+      .post("http://localhost:3000/recipes.json", params)
+      .then((response) => {
+        setRecipes([...recipes, response.data]); // recipes.push(response.data)
+      })
+      .catch((errors) => {
+        console.log(error.response.data.errors);
+        setErrors(error.response.data.errors);
+      });
   };
 
   const handleShowRecipe = (recipe) => {
@@ -35,7 +48,7 @@ export function Home() {
     <div className="container">
       <Login />
       <Signup />
-      <RecipesNew />
+      <RecipesNew onCreateRecipe={handleCreateRecipe} recipeErrors={errors} />
       <RecipesIndex recipes={recipes} onSelectRecipe={handleShowRecipe} />
       <Modal show={isRecipesShowModalVisible} onClose={handleHideRecipe}>
         <RecipesShow recipe={currentRecipe} />
