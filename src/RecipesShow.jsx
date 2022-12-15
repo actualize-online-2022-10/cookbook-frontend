@@ -5,6 +5,11 @@ export function RecipesShow(props) {
     props.onUpdateRecipe(props.recipe.id, params);
     event.target.reset();
   };
+
+  const handleClick = () => {
+    props.onDestroyRecipe(props.recipe);
+  };
+
   return (
     <div>
       <h2>{props.recipe.title}</h2>
@@ -39,6 +44,9 @@ export function RecipesShow(props) {
           Edit Recipe
         </button>
       </form>
+      <button className="btn btn-danger mt-3" onClick={handleClick}>
+        Delete Recipe
+      </button>
     </div>
   );
 }

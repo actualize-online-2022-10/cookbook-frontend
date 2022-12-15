@@ -53,6 +53,13 @@ export function Home() {
       });
   };
 
+  const handleDestoryRecipe = (recipe) => {
+    axios.delete("http://localhost:3000/recipes/" + recipe.id + ".json").then((response) => {
+      setRecipes(recipes.filter((r) => r.id !== recipe.id));
+      handleHideRecipe();
+    });
+  };
+
   const handleShowRecipe = (recipe) => {
     setIsRecipesShowModalVisible(true);
     setCurrentRecipe(recipe);
@@ -72,7 +79,7 @@ export function Home() {
       <RecipesNew onCreateRecipe={handleCreateRecipe} errors={errors} />
       <RecipesIndex recipes={recipes} onSelectRecipe={handleShowRecipe} />
       <Modal show={isRecipesShowModalVisible} onClose={handleHideRecipe}>
-        <RecipesShow recipe={currentRecipe} onUpdateRecipe={handleUpdateRecipe} />
+        <RecipesShow recipe={currentRecipe} onUpdateRecipe={handleUpdateRecipe} onDestroyRecipe={handleDestoryRecipe} />
       </Modal>
     </div>
   );
