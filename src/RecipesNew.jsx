@@ -8,7 +8,6 @@ export function RecipesNew() {
     event.preventDefault();
     const params = new FormData(event.target);
     handleCreateRecipe(params);
-    event.target.reset();
   };
 
   const handleCreateRecipe = (params) => {
@@ -18,8 +17,7 @@ export function RecipesNew() {
         window.location.href = "/";
       })
       .catch((error) => {
-        console.log(error.response.data.errors);
-        setErrors(error.response.data.errors);
+        setErrors(error.response.data.errors ? error.response.data.errors : ["Must Login!"]);
       });
   };
 
