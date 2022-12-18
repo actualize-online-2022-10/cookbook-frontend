@@ -1,16 +1,33 @@
-export function RecipesNew(props) {
+import axios from "axios";
+import { useState } from "react";
+
+export function RecipesNew() {
+  const [errors, setErrors] = useState([]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
-    props.onCreateRecipe(params);
+    handleCreateRecipe(params);
     event.target.reset();
   };
-  console.log(props.errors);
+
+  const handleCreateRecipe = (params) => {
+    axios
+      .post("http://localhost:3000/recipes.json", params)
+      .then((response) => {
+        window.location.href = "/";
+      })
+      .catch((error) => {
+        console.log(error.response.data.errors);
+        setErrors(error.response.data.errors);
+      });
+  };
+
   return (
     <div id="recipes-new">
       <h1>New Recipe</h1>
       <ul>
-        {props.errors.map((error) => (
+        {errors.map((error) => (
           <li key={error}>{error}</li>
         ))}
       </ul>

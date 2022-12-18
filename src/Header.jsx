@@ -34,9 +34,9 @@ export function Header() {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#new-recipe">
+                  <Link className="nav-link" to="/recipes/new">
                     New Recipe
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/signup">
@@ -44,9 +44,9 @@ export function Header() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#login">
+                  <Link className="nav-link" to="/login">
                     Login
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <LogoutLink />
