@@ -5,6 +5,7 @@ import { Home } from "./Home";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { RecipesNew } from "./RecipesNew";
+import { RecipesShowPage } from "./RecipesShowPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/recipes/new" element={<RecipesNew />} />
+          <Route path="/recipes/:id" element={<RecipesShowPage />} />
         </Routes>
       </div>
       <Footer />
