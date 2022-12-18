@@ -4,7 +4,6 @@ import { RecipesIndex } from "./RecipesIndex";
 import { RecipesNew } from "./RecipesNew";
 import { RecipesShow } from "./RecipesShow";
 import { Modal } from "./Modal";
-import { Signup } from "./Signup";
 import { Login } from "./Login";
 
 export function Home() {
@@ -75,7 +74,6 @@ export function Home() {
   return (
     <div className="container">
       <Login />
-      <Signup />
       <RecipesNew onCreateRecipe={handleCreateRecipe} errors={errors} />
       <RecipesIndex recipes={recipes} onSelectRecipe={handleShowRecipe} />
       <Modal show={isRecipesShowModalVisible} onClose={handleHideRecipe}>

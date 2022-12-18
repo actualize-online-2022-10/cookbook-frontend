@@ -1,14 +1,21 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { Home } from "./Home";
+import { Signup } from "./Signup";
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Header />
-      <Home />
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </div>
       <Footer />
-    </div>
+    </BrowserRouter>
   );
 }
 
