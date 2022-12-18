@@ -4,13 +4,9 @@ import { useState } from "react";
 export function RecipesNew() {
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = (event) => {
+  const handleCreateRecipe = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
-    handleCreateRecipe(params);
-  };
-
-  const handleCreateRecipe = (params) => {
     axios
       .post("http://localhost:3000/recipes.json", params)
       .then((response) => {
@@ -29,7 +25,7 @@ export function RecipesNew() {
           <li key={error}>{error}</li>
         ))}
       </ul>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleCreateRecipe}>
         <div>
           Title: <input name="title" className="form-control" type="text" />
         </div>
