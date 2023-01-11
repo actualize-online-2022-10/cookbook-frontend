@@ -10,7 +10,7 @@ export function Home() {
   const [currentRecipe, setCurrentRecipe] = useState({});
 
   const handleIndexRecipes = () => {
-    axios.get("http://localhost:3000/recipes.json").then((response) => {
+    axios.get("https://proud-wood-3713.fly.dev/recipes.json").then((response) => {
       console.log(response.data);
       setRecipes(response.data);
     });
