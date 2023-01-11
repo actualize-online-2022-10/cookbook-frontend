@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 #root {
   background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/tileable_wood_texture.png");
   height: 100vh;

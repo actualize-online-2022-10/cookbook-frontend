@@ -5,7 +5,7 @@ export function RecipesIndex(props) {
 
   return (
     <div id="recipes-index">
-      <h1>All Recipes</h1>
+      <h1 className="text-3xl font-bold underline">All Recipes</h1>
       Search recipes:{" "}
       <input
         className="form-control"
